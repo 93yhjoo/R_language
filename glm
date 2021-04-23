@@ -1,0 +1,9 @@
+library(MASS)
+boston=Boston
+boston$chas=factor(Boston$chas)
+boston$medv=factor(ifelse(Boston$medv>21,"H","L") )
+summary(boston)
+#로지스틱 회귀
+fit.all=glm(formula=medv ~ .,family=binomial, data=boston)
+summary(fit.all)
+anova(fit.all)
